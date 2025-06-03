@@ -1,0 +1,69 @@
+- name: make a directory runner
+  ansible.builtin.file:
+    path: /home/ec2-user/github-runner
+    state: directory
+  become_user: ec2-user
+
+- name: Download Github runner
+  ansible.builtin.unarchive:
+    src:  https://github.com/actions/runner/releases/download/v2.324.0/actions-runner-linux-x64-2.324.0.tar.gz
+    dest: /home/ec2-user/github-runner
+    remote_src: yes
+  become_user: ec2-user
+
+- name: install dependencies
+  ansible.builtin.shell: /home/ec2-user/github-runner/bin/installdependencies.sh
+
+- name: Get svc.sh file status
+  ansible.builtin.stat:
+    path: /home/ec2-user/github-runner/svc.sh
+  register: svc_file
+
+
+- name: Debug file existence
+  ansible.builtin.debug:
+    msg: "{{ 'svc.sh exists' if svc_file.stat.exists else 'svc.sh does not exist' }}"
+
+- name: uninstall service runner
+  ansible.builtin.shell: ./svc.sh uninstall;
+  ignore_errors: true
+  args:
+    chdir: /home/ec2-user/github-runner
+
+- name: create a runner
+  ansible.builtin.shell:  export SECRET_TOKEN="A5LROC73FNB7WX64KQZAJE3IHMFB6"
+
+  ./config.sh remove --token  ./config.sh --url https://github.com/pdevops78/expense-backend --token {{ github_token }};./config.sh --unattended --replace --url https://github.com/pdevops78/expense-backend --token  ./config.sh --url https://github.com/pdevops78/expense-backend --token {{ github_token }}
+  args:
+    chdir: /home/ec2-user/github-runner
+  become_user: ec2-user
+
+# start service github action runner
+- name: start service runner
+  ansible.builtin.shell: ./svc.sh install ; ./svc.sh start
+  args:
+    chdir: /home/ec2-user/github-runner
+
+- name: Install java 17 version
+  ansible.builtin.dnf:
+    name: java-17-openjdk
+    state: installed
+
+#- name: make a directory
+#  ansible.builtin.file:
+#    path: /opt
+#    state: directory
+
+- name: Download sonar-scanner
+  ansible.builtin.unarchive:
+    src: https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-7.1.0.4889-linux-x64.zip
+    dest: /opt
+    remote_src: yes
+
+
+
+
+# session:50 need to check vault
+
+
+

@@ -1,0 +1,44 @@
+- name: add a user
+  ansible.builtin.user:
+    name: artifactory
+
+- name: make a folder
+  ansible.builtin.file:
+    path: /opt
+    state: directory
+    owner: artifactory
+    group: artifactory
+
+- name: Download artifactory repo
+  ansible.builtin.unarchive:
+    src: https://releases.jfrog.io/artifactory/bintray-artifactory/org/artifactory/oss/jfrog-artifactory-oss/7.21.5/jfrog-artifactory-oss-7.21.5-linux.tar.gz
+    dest: /opt
+    owner: artifactory
+    group: artifactory
+    remote_src: yes
+  become_user: artifactory
+
+
+- name: copy jfrog service file
+  ansible.builtin.template:
+    src: jfrog.service
+    dest: /etc/systemd/system/artifactory.service
+
+- name: start artifactory service
+  ansible.builtin.systemd_service:
+    name: artifactory
+    state: started
+    daemon_reload: true
+    enabled: true
+
+
+
+
+#  $ cd /opt/
+#  $ wget https://releases.jfrog.io/artifactory/bintray-artifactory/org/artifactory/oss/jfrog-artifactory-oss/7.21.5/jfrog-artifactory-oss-7.21.5-linux.tar.gz
+#  $ cd artifactory-pro-7.21.5
+#  $ cd app/bin
+#  $ ./artifactory.sh start
+
+# BROWSE - http://15.207.221.219:8082
+# Username/Password - admin/password

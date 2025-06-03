@@ -1,0 +1,46 @@
+- name: create new user
+  ansible.builtin.user:
+    name: sonarq
+
+- name: Install java 17 version
+  ansible.builtin.dnf:
+    name: java-17-openjdk
+    state: installed
+
+- name: make a directory
+  ansible.builtin.file:
+    path: /opt
+    owner: sonarq
+    group: sonarq
+    state: directory
+
+- name: Download sonarqube
+  ansible.builtin.unarchive:
+    src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.5.1.90531.zip
+    dest: /opt
+    owner: sonarq
+    group: sonarq
+    remote_src: yes
+  become_user: sonarq
+
+- name: copy sonarqube service
+  ansible.builtin.template:
+    src: sonarqube.service
+    dest: /etc/systemd/system/sonarqube.service
+
+- name: start sonarqube service
+  ansible.builtin.systemd_service:
+    name: sonarqube
+    state: started
+    enabled: yes
+    daemon_reload: yes
+
+
+
+
+
+
+
+
+
+

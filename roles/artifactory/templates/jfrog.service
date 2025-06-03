@@ -1,0 +1,13 @@
+[Unit]
+Description=JFrog Artifactory
+After=network.target
+
+[Service]
+User=artifactory
+ExecStart=/opt/artifactory-oss-7.21.5/app/bin/artifactoryManage.sh start
+ExecStop=/opt/artifactory-oss-7.21.5/app/bin/artifactoryManage.sh stop
+Restart=always
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
