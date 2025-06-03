@@ -40,3 +40,22 @@ resource "aws_iam_role_policy" "test_policy" {
     ]
   })
 }
+// actions
+data "aws_iam_policy_document" "policy" {
+  statement {
+    effect    = "Allow"
+    actions   = ["ec2:Describe*"]
+    resources = ["*"]
+  }
+}
+// attach aws policy document
+resource "aws_iam_policy" "policy" {
+  name        = "test-policy..."
+  description = "A test policy"
+  policy      = data.aws_iam_policy_document.policy.json
+}
+
+resource "aws_iam_role_policy_attachment" "managed_policy" {
+  policy_arn = aws_iam_policy.policy.id
+  role = aws_iam_role.test_role.id
+}
