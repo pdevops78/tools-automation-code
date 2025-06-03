@@ -20,7 +20,7 @@
 
 - name: start prometheus service
   ansible.builtin.systemd_system:
-    name: sonarqube
+    name: prometheus
     state: started
     daemon_reload: yes
     enable: yes
