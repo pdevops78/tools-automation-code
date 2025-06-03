@@ -1,0 +1,5 @@
+- name: create prometheus
+  hosts: all
+  become: yes
+  roles:
+    - "{{ tool_name }}"
