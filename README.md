@@ -1,6 +1,65 @@
 # tools-automation-code
 Monitoring tools:
 ================
+what is monitoring?
+Monitoring refers to tracking the performance and status of instances, such as CPU usage, memory consumption, and network activity, to ensure smooth operation and detect issues.
+
+Scrape interval:
+================
+- scrape interval is set to 10s in prometheus.yml, Prometheus will collect metrics every 10 seconds from the target instance.
+
+target instance:
+================
+A target instance refers to a specific system, server, or virtual machine that is designated to receive and process requests or data.
+
+to carry nodes on prometheus , need to install node_exporter
+
+install node_Exporter:
+======================
+curl -L -O https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-amd64.tar.gz
+
+* to execute on one single ip address then we should go for static_configs
+* Autodiscovery in Prometheus allows multiple nodes to automatically send metrics to the Prometheus dashboard using Node Exporter.
+prometheus dashboard:
+======================
+* node_cpu_seconds_total 
+* node_memory_MemFree_bytes
+
+Errors:
+=======
+could not describe instance : NoCredentialProviders that there are no valid AWS credentials available to authenticate the request.( so Iam role is required)
+NoCredentialProviders" error means that there are no valid AWS credentials available to authenticate the request.
+
+to remove previous list of instances in roles:
+==============================================
+aws iam list-instance-profiles ,// to remove list of instance profiles
+# Step 1: Create an IAM Role
+aws iam create-role --role-name MyEC2Role --assume-role-policy-document file://trust-policy.json
+
+# Step 2: Create an Instance Profile
+aws iam create-instance-profile --instance-profile-name MyInstanceProfile
+
+# Step 3: Add IAM Role to Instance Profile
+aws iam add-role-to-instance-profile --instance-profile-name MyInstanceProfile --role-name MyEC2Role
+
+# Step 4: Attach Instance Profile to EC2 Instance
+aws ec2 associate-iam-instance-profile --instance-id i-XXXXXXXX --iam-instance-profile Name=MyInstanceProfile
+
+Example EC2 IAM Actions
+- ec2:StartInstances – Start an EC2 instance.
+- ec2:StopInstances – Stop an instance.
+- ec2:DescribeInstances – Retrieve information about instances.
+- ec2:TerminateInstances – Delete an instance.
+- ec2:AttachVolume – Attach an EBS volume to an instance.
+
+- aws_iam_policy → Creates a standalone managed policy that can be attached to multiple roles, users, or groups.
+- aws_iam_role_policy → Defines an inline policy, which is embedded directly within a specific IAM role and cannot be reused.
+  📌 Inline policies are embedded inside a role and cannot be reused.
+  📌 aws_iam_role_policy allows defining an inline policy outside the role but is still specific to one role.
+  📌 Managed policies (aws_iam_policy) are separate and attached using aws_iam_role_policy_attachment.
+
+
+
 prometheus
 -----------
 * Download prometheus
