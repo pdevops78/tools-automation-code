@@ -23,8 +23,9 @@ resource "aws_iam_instance_profile" "test_profile" {
   name = "prometheus-profile"
   role = aws_iam_role.test_role.name
 }
+// create an inline policy
 resource "aws_iam_role_policy" "test_policy" {
-  name = "test_policy"
+  name = "test_policy-inline"
   role = aws_iam_role.test_role.id
 
   policy = jsonencode({
