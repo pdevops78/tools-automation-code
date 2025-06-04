@@ -129,7 +129,7 @@ prometheus
   44  03/06/25 01:34:49 cd prometheus-2.53.4.linux-amd64
   45  03/06/25 01:34:50 ls -l
   46  03/06/25 01:35:12 systemctl restart prometheus ; tail -f /var/log/messages
-*  47  03/06/25 01:36:34 ls -l prometheus.yml
+* 47  03/06/25 01:36:34 ls -l prometheus.yml
    48  03/06/25 01:38:35 vim /etc/systemd/system/prometheus.service
    49  03/06/25 01:40:24 systemctl status prometheus
    50  03/06/25 01:40:36 systemctl restart prometheus
@@ -137,3 +137,17 @@ prometheus
    52  03/06/25 01:40:47 systemctl restart prometheus
    53  03/06/25 01:40:54 systemctl restart prometheus ; tail -f /var/log/messages
    54  03/06/25 01:41:57 netstat -lntp
+
+
+node_exporter:
+==============
+54  04/06/25 09:30:05 cd /opt
+55  04/06/25 09:30:18 curl -L -O https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-amd64.tar.gz
+56  04/06/25 09:30:20 ls -l
+57  04/06/25 09:30:29 tar -xvf node_exporter-1.9.1.linux-amd64.tar.gz
+58  04/06/25 09:30:32 ls -l
+59  04/06/25 09:30:37 cd node_exporter-1.9.1.linux-amd64
+60  04/06/25 09:30:38 ls -l
+61  04/06/25 09:30:52 ./node_exporter
+62  04/06/25 09:31:02 cd ..
+
