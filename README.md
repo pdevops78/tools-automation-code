@@ -32,6 +32,19 @@ prometheus dashboard:
 * node_cpu_seconds_total 
 * node_memory_MemFree_bytes
 
+use cases:
+==========
+* A single node needs to display metrics on the Prometheus dashboard using Node Exporter. 
+Use "static_configs"
+
+"All running instances should display metrics on the Prometheus dashboard using Node Exporter.
+Use 'auto discovery'."
+
+* to monitor only project instances(means multiple prometheus servers are running, in that which prometheus server needs to monitor ) not all running instances
+
+* how to get instance detailed data like name of the instance ,....
+
+
 Errors:
 =======
 could not describe instance : NoCredentialProviders that there are no valid AWS credentials available to authenticate the request.( so Iam role is required)
@@ -64,8 +77,6 @@ Example EC2 IAM Actions
   📌 Inline policies are embedded inside a role and cannot be reused.
   📌 aws_iam_role_policy allows defining an inline policy outside the role but is still specific to one role.
   📌 Managed policies (aws_iam_policy) are separate and attached using aws_iam_role_policy_attachment.
-
-
 
 prometheus
 -----------
