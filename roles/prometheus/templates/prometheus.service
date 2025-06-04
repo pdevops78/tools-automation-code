@@ -4,12 +4,10 @@ Description=prometheus
 [Service]
 
 User=expense
-Type=forking
 WorkingDirectory=/opt/prometheus-2.53.4.linux-amd64
 ExecStart=/opt/prometheus-2.53.4.linux-amd64/prometheus
 SyslogIdentifier=prometheus
 
 [Install]
-
 WantedBy=default.target
 
