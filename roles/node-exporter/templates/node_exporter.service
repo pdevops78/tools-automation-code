@@ -1,0 +1,11 @@
+[Unit]
+Description=node_exporter
+
+[Service]
+User=expense
+ExecStart=/opt/node_exporter-1.9.1.linux-amd64/node_exporter
+SyslogIdentifier=node_exporter
+
+[Install]
+WantedBy=default.target
+

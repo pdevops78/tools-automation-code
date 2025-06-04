@@ -5,11 +5,15 @@
   ansible.builtin.file:
     path: /opt
     state: directory
+    owner: expense
+    group: expense
 
 - name: Download prometheus
   ansible.builtin.unarchive:
     src: https://github.com/prometheus/node_exporter/releases/download/v{{ version }}/node_exporter-{{ version }}.linux-amd64.tar.gz
     dest: /opt
+    owner: expense
+    group: expense
     remote_src: yes
 
 - name: copy node exporter service
