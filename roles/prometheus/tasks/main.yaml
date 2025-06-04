@@ -17,10 +17,9 @@
     src: prometheus.service
     dest: /etc/systemd/system/prometheus.service
 
-
-- name: start prometheus service
-  ansible.builtin.systemd_system:
-    name: prometheus
-    state: started
-    daemon_reload: yes
-    enable: yes
+#- name: start prometheus service
+#  ansible.builtin.systemd_system:
+#    name: prometheus
+#    state: started
+#    daemon_reload: yes
+#    enable: yes
