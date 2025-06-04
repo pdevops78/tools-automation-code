@@ -5,11 +5,15 @@
   ansible.builtin.file:
     path: /opt
     state: directory
+    owner: expense
+    group: expense
 
 - name: Download prometheus
   ansible.builtin.unarchive:
     src: https://github.com/prometheus/prometheus/releases/download/v2.53.4/prometheus-2.53.4.linux-amd64.tar.gz
     dest: /opt
+    owner: expense
+    group: expense
     remote_src: yes
 
 - name: copy prometheus service file
