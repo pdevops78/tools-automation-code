@@ -151,3 +151,9 @@ node_exporter:
 61  04/06/25 09:30:52 ./node_exporter
 62  04/06/25 09:31:02 cd ..
 
+
+pending topics are:
+=====================
+ add node exporter under ansible
+run terraform and project apps should appear only on prometheus dashboard 
+
