@@ -8,7 +8,7 @@
     owner: expense
     group: expense
 
-- name: Download prometheus
+- name: Download node exporter
   ansible.builtin.unarchive:
     src: https://github.com/prometheus/node_exporter/releases/download/v{{ version }}/node_exporter-{{ version }}.linux-amd64.tar.gz
     dest: /opt
@@ -23,6 +23,9 @@
 
 - name: start service
   ansible.builtin.systemd_service:
-    name: node-exporter
+    name: node_exporter
     state: started
+    daemon_reload: true
+    enabled: true
+
 
