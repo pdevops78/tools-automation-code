@@ -8,10 +8,10 @@
     name: grafana
     state: installed
 
- - name: copy grafna service
-   ansible.builtin.template:
-     path: grafan.service
-     dest: /etc/systemd/system/grafana.service
+- name: copy grafna service
+  ansible.builtin.template:
+    path: grafan.service
+    dest: /etc/systemd/system/grafana.service
 
 - name: start grafana service
   ansible.builtin.systemd_service:
