@@ -11,7 +11,7 @@
 - name: copy grafna service
   ansible.builtin.template:
     src: grafana-server.service
-    dest: /etc/systemd/system/grafana-server
+    dest: /usr/lib/systemd/system/grafana-server.service
 
 - name: start grafana service
   ansible.builtin.systemd_service:
