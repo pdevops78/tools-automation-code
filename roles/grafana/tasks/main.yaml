@@ -1,6 +1,6 @@
 - name: copy grafana repo
   ansible.builtin.template:
-    path: grafana.repo
+    src: grafana.repo
     dest: /etc/yum.repos.d/grafana.repo
 
 - name: install grafana
@@ -10,7 +10,7 @@
 
 - name: copy grafna service
   ansible.builtin.template:
-    path: grafan.service
+    src: grafan.service
     dest: /etc/systemd/system/grafana.service
 
 - name: start grafana service
