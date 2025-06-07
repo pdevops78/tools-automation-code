@@ -27,7 +27,7 @@
 
 - name: copy prometheus scrape config
   ansible.builtin.template:
-    name: prometheus.yml
+    src: prometheus.yml
     dest: /opt/prometheus-2.53.4.linux-amd64/prometheus.yml
 
 - name: start prometheus service
