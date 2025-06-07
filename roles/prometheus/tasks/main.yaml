@@ -25,10 +25,17 @@
     src: prometheus.service
     dest: /etc/systemd/system/prometheus.service
 
+- name: copy prometheus scrape config
+  ansible.builtin.template:
+    name: prometheus.yml
+    dest: /opt/prometheus-2.53.4.linux-amd64/prometheus.yml
+
 - name: start prometheus service
   ansible.builtin.systemd_service:
     name: prometheus
     state: started
     enabled: yes
     daemon_reload: yes
+
+
 
