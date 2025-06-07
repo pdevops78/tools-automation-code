@@ -83,6 +83,23 @@ prometheus
 * Download prometheus
   /opt/sonarqube-25.5.0.107428/bin/linux-x86-64 
 
+grafana:
+=======
+* click on "Add visualization"
+* Down there is a build and code options
+* In metrics browser give "up" query
+* click on "run queries"
+* observer right side "visualization" there are multiple graphs 
+stat format:
+=============
+
+* project prometheus data in "stat format"
+* 1 means up and 0 means down
+* click on "Add value mappings" , enter 1 in value and Display text as "up"
+* click on "Text Mode" will get value
+* under "Legend" add {{name}} based on label it displays name and click on "Run Queries"
+* 
+
   1  03/06/25 01:23:45 ls -l
   2  03/06/25 01:23:47 cd /opt
   3  03/06/25 01:23:49 ls-l
