@@ -13,8 +13,8 @@
     src: https://github.com/prometheus/prometheus/releases/download/v2.53.4/prometheus-2.53.4.linux-amd64.tar.gz
     dest: /opt
     remote_src: yes
-    owner: expense
-    group: expense
+#    owner: expense
+#    group: expense
 
 - name: copy prometheus service file
   ansible.builtin.template:
