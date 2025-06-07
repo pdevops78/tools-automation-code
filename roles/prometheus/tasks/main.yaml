@@ -5,8 +5,8 @@
   ansible.builtin.file:
     path: /opt
     state: directory
-#    owner: expense
-#    group: expense
+    owner: expense
+    group: expense
 
 - name: Download prometheus
   ansible.builtin.unarchive:
