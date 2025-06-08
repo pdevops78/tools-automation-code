@@ -100,6 +100,58 @@ stat format:
 * under "Legend" add {{name}} based on label it displays name and click on "Run Queries"
 * 
 
+PromQL:
+=======
+* up{job=~".*"}
+* up{job=~.+} both are same .+ and .*
+* to get all node related names by using this expression: {__name__=~"node.*"}
+* up offset 5m , 5minutes back data
+* up +10 arithmetic expressions
+* up + up
+* up /up
+* floating values: node_cpu_seconds_total
+* ceil(node_cpu_seconds_total) : high value will display
+* floor(node_cpu_seconds_total) : low value will display
+* - Counter: A metric that only increases over time. It never decreases. This is used for things like total request count, bytes sent, or error occurrences—basically anything that accumulates. Example: http_requests_total
+- Gauge: A metric that can go up and down over time. It represents a current value, like CPU usage, memory consumption, or temperature. Example: cpu_temperature
+
+important concepts
+==================
+opertators=Num operator
+value type (guage/counter)
+functions
+usecase:1
+==========
+memory usage
+network usage project on grafana
+
+calculate cpu on prometheus dashboard:(in linux top command is used to know how much cpu use)
+======================================
+node_cpu_seconds_total
+required only frontend : node_cpu_seconds_total{name="frontend"}
+rate(node_cpu_seconds_total){name="frontend"}[1m]
+rate(node_cpu_seconds_total){name="frontend"}[1m]*100
+how much we use the cpu of each server to calculate
+100-(rate(node_cpu_seconds_total){name="frontend"}[1m]*100)
+100-(rate(node_cpu_seconds_total){name="frontend",mode="idle"}[1m]*100)
+avg by (name) (100-(rate(node_cpu_seconds_total){name="frontend",mode="idle"}[1m]*100))
+
+memory usage:(in linux free command is used to know how much memory use and cat /proc/meminfo)
+=============
+available vs free
+=================
+free : never touch memory
+available: how much memory left
+free -h : available memory
+node_memory_Memfree_bytes/ node_memory_MemTotal_bytes , to get free memory
+
+network usage:
+==============
+node_network_receive_bytes_total{name="frontend"}
+node_network_transmit_bytes_total{name="frontend"}
+node_network_transmit_bytes_total{name="frontend"} * -1
+
+
   1  03/06/25 01:23:45 ls -l
   2  03/06/25 01:23:47 cd /opt
   3  03/06/25 01:23:49 ls-l
@@ -169,8 +221,7 @@ node_exporter:
 62  04/06/25 09:31:02 cd ..
 
 
-pending topics are:
-=====================
- add node exporter under ansible
-run terraform and project apps should appear only on prometheus dashboard 
 
+1. instance are up on prometheus dashboard
+2. visualize the above data on grafana
+3. 
