@@ -1,5 +1,5 @@
 scrape_configs:
- - job_name: "state-config"
+ - job_name: "static-config"
    static_configs:
       - targets: ["localhost:9100"]
 
