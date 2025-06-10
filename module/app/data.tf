@@ -14,3 +14,6 @@ data "aws_iam_policy_document" "instance_assume_role_policy" {
     }
   }
 }
+data "vault_generic_secret" "get_secrets" {
+  path = "secret/data/myapp/config"
+}

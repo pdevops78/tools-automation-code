@@ -1,4 +1,4 @@
-- name: create prometheus
+- name: create tool
   hosts: all
   become: yes
   roles:
