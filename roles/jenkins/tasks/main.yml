@@ -1,0 +1,18 @@
+- name: copy jenkins repo
+  ansible.builtin.templates:
+    src: jenkins.repo
+    dest: /etc/yum.repos.d/jenkins.repo
+
+- name: install packages
+  ansible.builtin.dnf:
+    name:
+      - java-21-openjdk
+      - fontconfig
+      - jenkins
+    state: installed
+
+- name: start jenkins server
+  ansible.builtin.systemd_system:
+    name: jenkins
+    state: started
+    enabled: yes

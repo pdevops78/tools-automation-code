@@ -14,6 +14,7 @@ data "aws_iam_policy_document" "instance_assume_role_policy" {
     }
   }
 }
+// this data will retrieve in json format
 data "vault_generic_secret" "get_secrets" {
-  path = "secret/data/myapp/config"
+  path = "common/ssh"
 }
