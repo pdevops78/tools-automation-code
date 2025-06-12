@@ -12,3 +12,4 @@ variable "tools" {
   }
 }
 variable "env"{}
+variable "vault_token"{}
