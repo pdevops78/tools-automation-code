@@ -224,4 +224,39 @@ node_exporter:
 
 1. instance are up on prometheus dashboard
 2. visualize the above data on grafana
-3. 
+
+
+Logs:
+=====
+Transactional logs:
+-------------------
+Logs that have information about business transactions.
+Ex: Amount transfer in a bank
+
+Non-Transactional Logs:
+-----------------------
+Apps generally produce logs about its functionality like whether it can connect to DBm whether it can connect to any pheripherals.
+
+ELK
+---
+ElasticSearch(DB)
+LogStash(Transform)
+kibana(UI)
+
+to know size :
+==============
+cd /usr/share/elasticsearch
+du -h elasticsearch, total disk space used
+du -sh elasticsearch
+df -h . (if it is in root level), /dev/mapper/RootVG--rootvol
+cd /home/
+df -h .(to know home level),/dev/mapper/RootVG--homevol
+
+
+
+1. Todays
+newrelic
+vault
+2. elk
+
+
