@@ -1,7 +1,7 @@
 - name: copy repo
   ansible.builtin.templates:
-    src: kibana.repo
-    dest: /etc/yum.repos.d/kibana.repo
+    src: elastic.repo
+    dest: /etc/yum.repos.d/elastic.repo
 
 - name: Install kibana
   ansible.builtin.dnf:
