@@ -11,13 +11,13 @@
 - name: Replace a specific line in a file
   ansible.builtin.lineinfile:
     path: /etc/kibana/kibana.yml
-    regexp: "^#server.port: 5601"
+    regexp: '^#server.port: 5601'
     line: "server.port: 5601"
 
 - name: Replace a specific line in a file
   ansible.builtin.lineinfile:
     path: /etc/kibana/kibana.yml
-    regexp: '^#server.host: "localhost"'
+    regexp: '^#server.host: localhost'
     line: "server.host: 0.0.0.0"
 
 
