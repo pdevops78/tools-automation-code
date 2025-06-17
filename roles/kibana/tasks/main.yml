@@ -24,7 +24,7 @@
 
 - name: start kibana service
   ansible.builtin.systemd_service:
-    name: kibana
+    name: kibana.service
     state: started
 
 
