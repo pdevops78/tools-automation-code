@@ -20,8 +20,6 @@
     regexp: '^#server.host: "localhost"'
     line: 'server.host: "0.0.0.0"'
 
-
-
 - name: start kibana service
   ansible.builtin.systemd_service:
     name: kibana.service
