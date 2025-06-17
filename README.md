@@ -253,10 +253,283 @@ cd /home/
 df -h .(to know home level),/dev/mapper/RootVG--homevol
 
 
+elasticsearch:(r7i.large)
+==============
+elasticsearch.repo
+-------------------
+[elasticsearch]
+name=Elasticsearch repository for 9.x packages
+baseurl=https://artifacts.elastic.co/packages/9.x/yum
+gpgcheck=0
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
 
-1. Todays
-newrelic
-vault
-2. elk
 
+install elasticsearch:
+----------------------
+sudo dnf install elasticsearch
+
+start and stop elasticsearch
+-----------------------------
+sudo systemctl start elasticsearch.service
+sudo systemctl stop elasticsearch.service
+systemctl enable elasticsearch.service
+
+Install kibana:
+================
+kibana.repo 
+
+[kibana-9.X]
+name=Kibana repository for 9.x packages
+baseurl=https://artifacts.elastic.co/packages/9.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+
+sudo dnf install kibana
+
+Open kibana.yml in a text editor.
+---------------------------------
+kibana server reads properties from kibana.yml file
+by default kibana will run on localhost:5601 it will work only itself , so to connect to outside need to change in kibana.yml file
+#server.host: localhost
+server.host: 0.0.0.0
+#server.port: 5601 
+
+Run Kibana with systemd
+-----------------------
+sudo /bin/systemctl daemon-reload
+sudo /bin/systemctl enable kibana.service
+sudo systemctl start kibana.service
+sudo systemctl stop kibana.service
+sudo systemctl status kibana
+
+packages install path:
+======================
+-  /usr/local/lib/ or /usr/lib/
+
+kibana home directory:
+----------------------
+/usr/share/kibana
+
+/usr/share/kibana/bin , binaries
+config files:(kibana.yml)
+-------------
+/usr/share/kibana/bin
+
+log files:
+-----------
+/var/log/kibana	
+
+plugins:
+---------
+/usr/share/kibana/plugins
+
+logstash:
+---------
+logstash.repo
+--------------
+[logstash-9.x]
+name=Elastic repository for 9.x packages
+baseurl=https://artifacts.elastic.co/packages/9.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+
+Install logstash:
+-----------------
+sudo dnf install logstash
+sudo systemctl start logstash.service
+
+how to collect logs from component?
+===================================
+go to /etc/logstash/conf.d
+create a conf file: 
+frontend.conf
+-------------
+
+input{
+file{
+path => "/var/log/nginx/access.log"
+}
+}
+
+how to send logs to elasticsearch?
+==================================
+output {
+elasticsearch {
+hosts => "http://localhost:9200"
+data_stream => "auto"
+user => ""
+password => ""
+index => "frontend-log-%{+yyyy.MM.dd}"
+}
+}
+
+
+Security configuration installation:
+-------------------------------------
+Running scriptlet: elasticsearch-9.0.2-1.x86_64                                                                                                        1/1
+--------------------------- Security autoconfiguration information ------------------------------
+
+Authentication and authorization are enabled.
+TLS for the transport and HTTP layers is enabled and configured.
+
+The generated password for the elastic built-in superuser is : sT1tVagtnU5uO0DfRjxO
+
+If this node should join an existing cluster, you can reconfigure this with
+'/usr/share/elasticsearch/bin/elasticsearch-reconfigure-node --enrollment-token <token-here>'
+after creating an enrollment token on your existing cluster.
+
+You can complete the following actions at any time:
+
+Reset the password of the elastic built-in superuser with
+'/usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic'.
+
+Generate an enrollment token for Kibana instances with
+'/usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana'.
+
+Generate an enrollment token for Elasticsearch nodes with
+'/usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s node'.
+
+-------------------------------------------------------------------------------------------------
+### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd
+sudo systemctl daemon-reload
+sudo systemctl enable elasticsearch.service
+### You can start elasticsearch service by executing
+sudo systemctl start elasticsearch.service
+
+/usr/lib/tmpfiles.d/elasticsearch.conf:1: Line references path below legacy directory /var/run/, updating /var/run/elasticsearch → /run/elasticsearch; please update the tmpfiles.d/ drop-in file accordingly.
+
+Verifying        : elasticsearch-9.0.2-1.x86_641/1
+
+
+history:
+========
+1  15/06/25 05:24:29 vim  /etc/yum.repos.d/elasticsearch.repo
+2  15/06/25 05:24:52 dnf install elasticsearch -y
+3  15/06/25 05:25:54 cd /etc/yum.repos.d
+4  15/06/25 05:25:56 ls -l
+5  15/06/25 05:26:08 vim elasticsearch.repo
+6  15/06/25 05:26:38 dnf install elasticsearch -y
+7  15/06/25 05:30:04 systemctl status elasticsearch
+8  15/06/25 05:30:12 systemctl enable elasticsearch
+9  15/06/25 05:30:16 systemctl status elasticsearch
+10  15/06/25 05:30:52 systemctl start elasticsearch
+11  15/06/25 05:31:05 systemctl start elasticsearch.service
+12  15/06/25 05:31:13 systemctl status elasticsearch
+13  15/06/25 05:31:22 netstat -lntp
+14  15/06/25 05:31:56 vim kibana.repo
+15  15/06/25 05:32:33 dnf install kibana -y
+16  15/06/25 05:33:07 systemctl status kibana
+17  15/06/25 05:33:14 systemctl enable  kibana
+18  15/06/25 05:33:28 systemctl start kibana.service
+19  15/06/25 05:33:35 systemctl status kibana.service
+20  15/06/25 05:33:40 netstat -lntp
+21  15/06/25 05:33:56 cd /var/log
+22  15/06/25 05:33:58 ls -l
+23  15/06/25 05:34:07 cd
+24  15/06/25 05:34:13 cd /var/log/kibana
+25  15/06/25 05:34:15 ls -l
+26  15/06/25 05:34:46 cd /usr/share
+27  15/06/25 05:34:48 ls -l
+28  15/06/25 05:34:57 cd kibana
+29  15/06/25 05:34:58 ls -l
+30  15/06/25 05:35:04 cd bin
+31  15/06/25 05:35:05 ls -l
+32  15/06/25 05:35:20 vim kibana
+33  15/06/25 05:36:26 dnf list | grep kibana.yml
+34  15/06/25 05:37:23 cd ..
+35  15/06/25 05:37:24 ls -l
+36  15/06/25 05:37:45 cd /etc/kibana
+37  15/06/25 05:37:47 ls -l
+38  15/06/25 05:37:55 vim kibana.yml
+39  15/06/25 05:38:24 systemctl restart kibana.service
+40  15/06/25 05:38:33 systemctl status  kibana.service
+41  15/06/25 05:38:39 netsat -lntp
+42  15/06/25 05:38:44 netstat -lntp
+43  15/06/25 05:41:48 '/usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana'
+44  15/06/25 05:41:53 /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
+45  15/06/25 05:42:50 cd /usr/share
+46  15/06/25 05:42:52 ls -l
+47  15/06/25 05:42:54 cd kibana
+48  15/06/25 05:42:56 ls -l
+49  15/06/25 05:42:59 cd bin
+50  15/06/25 05:43:20 ls -l
+51  15/06/25 05:43:31 cat kibana-verification-code
+52  15/06/25 05:43:39 cat kibana-verification-code.bat
+53  15/06/25 05:44:18 cat /usr/share/kibana/bin/kibana-verification-code.bat
+54  15/06/25 05:44:46  /usr/share/kibana/bin/kibana-verification-code.bat
+55  15/06/25 05:44:54 /usr/share/kibana/bin/kibana-verification-code.bat
+56  15/06/25 05:47:26 cd ../../..
+57  15/06/25 05:47:28 cd ..
+58  15/06/25 05:47:29 cd
+59  15/06/25 05:47:41 /usr/share/kibana/bin/kibana-verification-code.bat
+60  15/06/25 05:47:50 /usr/share/kibana/bin/kibana-verification-code
+61  15/06/25 05:48:16 cat /usr/share/kibana/bin/kibana-verification-code
+62  15/06/25 05:48:34 cd  /usr/share/kibana/bin
+63  15/06/25 05:48:36 ls -l
+64  15/06/25 05:48:39 kibana-verification-code
+65  15/06/25 05:48:51 /usr/share/kibana/bin/kibana-verification-code
+66  15/06/25 05:52:18 cd
+67  15/06/25 05:52:23 cd /etc/yum.repos.d
+68  15/06/25 05:52:31 vim logstash.repo
+69  15/06/25 06:03:32 dnf install logstash -y
+70  15/06/25 06:04:39 systemctl status logstash.service
+71  15/06/25 06:05:48 systemctl enable logstash.service
+72  15/06/25 06:06:07 systemctl start  logstash.service
+73  15/06/25 06:06:10 systemctl status logstash.service
+74  15/06/25 06:06:19 netstat -lntp
+75  15/06/25 06:06:47 cd
+76  15/06/25 06:10:09 git clone https://github.com/pdevops78/expense-ansible
+77  15/06/25 06:10:15 cd
+78  15/06/25 06:10:18 ls -l
+79  15/06/25 06:10:21 cd expense-ansible
+80  15/06/25 06:10:25 git pull
+81  15/06/25 06:10:48 ls -l
+82  15/06/25 06:11:08 cd roles
+83  15/06/25 06:11:09 ls -l
+84  15/06/25 06:11:19 mkdir logstash
+85  15/06/25 06:11:26 cd logstash
+86  15/06/25 06:11:52 cd
+
+
+how to loop multi vault paths?
+
+
+rysyslog.conf:
+===============
+$umask 0022
+template(name="OnlyMsg" type="string" string="%msg:::drop-last-lf%\n")
+
+if( $programname == '{{component}}' ) then {
+action(type="omfile" file="/var/log/{{component}}.log" template="OnlyMsg")
+& stop
+}
+
+frontend.log
+-------------
+
+backend.log
+
+
+How my app is working ?
+how my server is working?
+notify any issues:
+Server Performance:
+------------------
+to calculate,cpu,memory through prometheus, grafana
+
+Application Performance:
+-------------------------
+newrelic 
+
+
+Logs on each server to check
+Log Management
+(we cannot login to each and every server manually to check the logs , we need a place to see them at single place: by using elk )
 

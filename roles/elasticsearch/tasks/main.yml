@@ -1,0 +1,16 @@
+- name: copy elastic repo
+  ansible.builtin.templates:
+    src: elasticsearch.repo
+    dest: /etc/yum.repos.d/elasticsearch.repo
+
+
+- name: install elasticsearch
+  ansible.builtin.dnf:
+    name: elasticsearch
+    state: installed
+
+- name: start elasticsearch
+  ansible.builtin.systemd_service:
+    name: elasticsearch.service
+    state: started
+    enabled: true
