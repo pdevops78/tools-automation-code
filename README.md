@@ -533,3 +533,12 @@ Logs on each server to check
 Log Management
 (we cannot login to each and every server manually to check the logs , we need a place to see them at single place: by using elk )
 
+
+vault latest credentials:
+===========================
+Initial root token
+hvs.T8WnPWmYmGZkPYlGAHXVmebk
+
+hvs.T8WnPWmYmGZkPYlGAHXVmebk
+Key 1
+eHVr7eLa14r8nlx98L5TD9MT3JqTTXypYfhLSJixz+g=
