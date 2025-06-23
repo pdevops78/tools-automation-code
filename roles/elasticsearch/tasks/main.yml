@@ -3,7 +3,6 @@
     src: elasticsearch.repo
     dest: /etc/yum.repos.d/elasticsearch.repo
 
-
 - name: install elasticsearch
   ansible.builtin.dnf:
     name: elasticsearch
