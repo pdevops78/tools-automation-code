@@ -9,7 +9,7 @@
     owner: artifactory
     group: artifactory
 
-- name: Download artifactory repo
+- name: Download and unarchive artifactory repo
   ansible.builtin.unarchive:
     src: https://releases.jfrog.io/artifactory/bintray-artifactory/org/artifactory/oss/jfrog-artifactory-oss/7.21.5/jfrog-artifactory-oss-7.21.5-linux.tar.gz
     dest: /opt
