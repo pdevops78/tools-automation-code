@@ -25,13 +25,3 @@
 
 
 
-
-
-#  $ cd /opt/
-#  $ wget https://releases.jfrog.io/artifactory/bintray-artifactory/org/artifactory/oss/jfrog-artifactory-oss/7.21.5/jfrog-artifactory-oss-7.21.5-linux.tar.gz
-#  $ cd artifactory-pro-7.21.5
-#  $ cd app/bin
-#  $ ./artifactory.sh start
-
-# BROWSE - http://15.207.221.219:8082
-# Username/Password - admin/password
