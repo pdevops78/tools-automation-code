@@ -18,10 +18,10 @@
     remote_src: yes
   become_user: artifactory
 
-- name: copy jfrog service file
-  ansible.builtin.template:
-    src: jfrog.service
-    dest: /etc/systemd/system/artifactory.service
+#- name: copy jfrog service file
+#  ansible.builtin.template:
+#    src: jfrog.service
+#    dest: /etc/systemd/system/artifactory.service
 
 - name: start artifactory service
   ansible.builtin.systemd_service:
