@@ -18,7 +18,6 @@
     remote_src: yes
   become_user: artifactory
 
-
 - name: copy jfrog service file
   ansible.builtin.template:
     src: jfrog.service
