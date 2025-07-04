@@ -31,9 +31,7 @@
     chdir: /home/ec2-user/github-runner
 
 - name: create a runner
-  ansible.builtin.shell:  export SECRET_TOKEN="A5LROC73FNB7WX64KQZAJE3IHMFB6"
-
-  ./config.sh remove --token  ./config.sh --url https://github.com/pdevops78/expense-backend --token {{ github_token }};./config.sh --unattended --replace --url https://github.com/pdevops78/expense-backend --token  ./config.sh --url https://github.com/pdevops78/expense-backend --token {{ github_token }}
+  ansible.builtin.shell:  export SECRET_TOKEN="A5LROC73FNB7WX64KQZAJE3IHMFB6" ./config.sh remove --token  ./config.sh --url https://github.com/pdevops78/expense-backend --token {{ github_token }};./config.sh --unattended --replace --url https://github.com/pdevops78/expense-backend --token  ./config.sh --url https://github.com/pdevops78/expense-backend --token {{ github_token }}
   args:
     chdir: /home/ec2-user/github-runner
   become_user: ec2-user
