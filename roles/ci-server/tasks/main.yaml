@@ -37,11 +37,11 @@
   become_user: ec2-user
 
 ## start service github action runner
-#- name: start service runner
-#  ansible.builtin.shell: ./svc.sh install ; ./svc.sh start
-#  args:
-#    chdir: /home/ec2-user/github-runner
-#
+- name: start service runner
+  ansible.builtin.shell: ./svc.sh install ; ./svc.sh start
+  args:
+    chdir: /home/ec2-user/github-runner
+
 #- name: Install java 17 version
 #  ansible.builtin.dnf:
 #    name: java-17-openjdk
