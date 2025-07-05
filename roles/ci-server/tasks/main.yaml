@@ -14,20 +14,20 @@
 - name: install dependencies
   ansible.builtin.shell: /home/ec2-user/github-runner/bin/installdependencies.sh
 
-- name: Get svc.sh file status
-  ansible.builtin.stat:
-    path: /home/ec2-user/github-runner/svc.sh
-  register: svc_file
+#- name: Get svc.sh file status
+#  ansible.builtin.stat:
+#    path: /home/ec2-user/github-runner/svc.sh
+#  register: svc_file
+#
+#- name: Debug file existence
+#  ansible.builtin.debug:
+#    msg: "{{ 'svc.sh exists' if svc_file.stat.exists else 'svc.sh does not exist' }}"
 
-- name: Debug file existence
-  ansible.builtin.debug:
-    msg: "{{ 'svc.sh exists' if svc_file.stat.exists else 'svc.sh does not exist' }}"
-
-- name: uninstall service runner
-  ansible.builtin.shell: ./svc.sh uninstall;
-  ignore_errors: true
-  args:
-    chdir: /home/ec2-user/github-runner
+#- name: uninstall service runner
+#  ansible.builtin.shell: ./svc.sh uninstall;
+#  ignore_errors: true
+#  args:
+#    chdir: /home/ec2-user/github-runner
 
 - name: create a runner
   ansible.builtin.shell: ./config.sh remove ; ./config.sh  --unattended --replace --url https://github.com/pdevops78 --token A5LROC4JF2LZ3UTN5RKHQETINFMO4
@@ -46,11 +46,7 @@
 #    name: java-17-openjdk
 #    state: installed
 
-##- name: make a directory
-##  ansible.builtin.file:
-##    path: /opt
-##    state: directory
-#
+
 #- name: Download sonar-scanner
 #  ansible.builtin.unarchive:
 #    src: https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-7.1.0.4889-linux-x64.zip
