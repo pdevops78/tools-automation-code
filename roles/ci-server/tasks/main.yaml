@@ -10,9 +10,9 @@
     dest: /home/ec2-user/github-runner
     remote_src: yes
   become_user: ec2-user
-#
-#- name: install dependencies
-#  ansible.builtin.shell: /home/ec2-user/github-runner/bin/installdependencies.sh
+
+- name: install dependencies
+  ansible.builtin.shell: /home/ec2-user/github-runner/bin/installdependencies.sh
 #
 #- name: Get svc.sh file status
 #  ansible.builtin.stat:
