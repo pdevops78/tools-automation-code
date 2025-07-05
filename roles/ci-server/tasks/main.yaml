@@ -13,17 +13,16 @@
 
 - name: install dependencies
   ansible.builtin.shell: /home/ec2-user/github-runner/bin/installdependencies.sh
-#
-#- name: Get svc.sh file status
-#  ansible.builtin.stat:
-#    path: /home/ec2-user/github-runner/svc.sh
-#  register: svc_file
-#
-#
-#- name: Debug file existence
-#  ansible.builtin.debug:
-#    msg: "{{ 'svc.sh exists' if svc_file.stat.exists else 'svc.sh does not exist' }}"
-#
+
+- name: Get svc.sh file status
+  ansible.builtin.stat:
+    path: /home/ec2-user/github-runner/svc.sh
+  register: svc_file
+
+- name: Debug file existence
+  ansible.builtin.debug:
+    msg: "{{ 'svc.sh exists' if svc_file.stat.exists else 'svc.sh does not exist' }}"
+
 - name: uninstall service runner
   ansible.builtin.shell: ./svc.sh uninstall;
   ignore_errors: true
