@@ -24,14 +24,14 @@
 #  ansible.builtin.debug:
 #    msg: "{{ 'svc.sh exists' if svc_file.stat.exists else 'svc.sh does not exist' }}"
 #
-#- name: uninstall service runner
-#  ansible.builtin.shell: ./svc.sh uninstall;
-#  ignore_errors: true
-#  args:
-#    chdir: /home/ec2-user/github-runner
-#
+- name: uninstall service runner
+  ansible.builtin.shell: ./svc.sh uninstall;
+  ignore_errors: true
+  args:
+    chdir: /home/ec2-user/github-runner
+
 - name: create a runner
-  ansible.builtin.shell:  ./config.sh remove --token A5LROC4JF2LZ3UTN5RKHQETINFMO4 ; ./config.sh  --unattended --replace --url https://github.com/pdevops78 --token A5LROC4JF2LZ3UTN5RKHQETINFMO4
+  ansible.builtin.shell: ./config.sh remove --token A5LROC4JF2LZ3UTN5RKHQETINFMO4 ; ./config.sh  --unattended --replace --url https://github.com/pdevops78 --token A5LROC4JF2LZ3UTN5RKHQETINFMO4
   args:
     chdir: /home/ec2-user/github-runner
   become_user: ec2-user
