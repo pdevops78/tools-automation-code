@@ -30,12 +30,12 @@
 #  args:
 #    chdir: /home/ec2-user/github-runner
 #
-#- name: create a runner
-#  ansible.builtin.shell: ./config.sh remove --token  ./config.sh --url https://github.com/pdevops78/expense-backend --token {{ github_token }};./config.sh --unattended --replace --url https://github.com/pdevops78/expense-backend --token {{github_token}}
-#  args:
-#    chdir: /home/ec2-user/github-runner
-#  become_user: ec2-user
-#
+- name: create a runner
+  ansible.builtin.shell: ./config.sh --url https://github.com/pdevops78 --token A5LROC4JF2LZ3UTN5RKHQETINFMO4
+  args:
+    chdir: /home/ec2-user/github-runner
+  become_user: ec2-user
+
 ## start service github action runner
 #- name: start service runner
 #  ansible.builtin.shell: ./svc.sh install ; ./svc.sh start
