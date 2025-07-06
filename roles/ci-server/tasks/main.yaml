@@ -29,7 +29,7 @@
 #  args:
 #    chdir: /home/ec2-user/github-runner
 
-- name: create a runner
+- name: install a runner
   ansible.builtin.shell: ./config.sh  --unattended --url https://github.com/pdevops78 --token A5LROC4JF2LZ3UTN5RKHQETINFMO4
   args:
     chdir: /home/ec2-user/github-runner
@@ -41,17 +41,7 @@
   args:
     chdir: /home/ec2-user/github-runner
 
-#- name: Install java 17 version
-#  ansible.builtin.dnf:
-#    name: java-17-openjdk
-#    state: installed
 
-
-#- name: Download sonar-scanner
-#  ansible.builtin.unarchive:
-#    src: https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-7.1.0.4889-linux-x64.zip
-#    dest: /opt
-#    remote_src: yes
 
 
 
