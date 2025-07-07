@@ -542,3 +542,18 @@ hvs.T8WnPWmYmGZkPYlGAHXVmebk
 hvs.T8WnPWmYmGZkPYlGAHXVmebk
 Key 1
 eHVr7eLa14r8nlx98L5TD9MT3JqTTXypYfhLSJixz+g=
+
+
+github self hosted runner:
+===========================
+1  06/07/25 03:00:41 mkdir actions-runner && cd actions-runner
+2  06/07/25 03:00:50 curl -o actions-runner-linux-x64-2.325.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.325.0/actions-runner-linux-x64-2.325.0.tar.gz
+3  06/07/25 03:00:59 tar xzf ./actions-runner-linux-x64-2.325.0.tar.gz
+4  06/07/25 03:01:07 ./config.sh --url https://github.com/pdevops78 --token A5LROC2K3PLZUAK7Y45KFCDINH2N2
+5  06/07/25 03:01:24 sudo ./bin/installdependencies.sh
+6  06/07/25 03:02:36 ./config.sh --url https://github.com/pdevops78 --token A5LROC2K3PLZUAK7Y45KFCDINH2N2
+7  06/07/25 03:03:31 ls -l
+8  06/07/25 03:03:37 ./run.sh
+9  06/07/25 03:04:14 sudo ./svc.sh install ;
+10  06/07/25 03:04:24 sudo ./svc.sh start
+11  06/07/25 03:07:39 history

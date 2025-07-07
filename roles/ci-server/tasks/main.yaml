@@ -30,7 +30,7 @@
 #    chdir: /home/ec2-user/github-runner
 
 - name: install a runner
-  ansible.builtin.shell: ./config.sh  --unattended --url https://github.com/pdevops78 --token A5LROC4JF2LZ3UTN5RKHQETINFMO4
+  ansible.builtin.shell: ./config.sh  --unattended --url https://github.com/pdevops78 --token A5LROC2K3PLZUAK7Y45KFCDINH2N2
   args:
     chdir: /home/ec2-user/github-runner
   become_user: ec2-user
@@ -42,11 +42,6 @@
     chdir: /home/ec2-user/github-runner
 
 
-
-
-
-
-# session:50 need to check vault
 
 
 
