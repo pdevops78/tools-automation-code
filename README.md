@@ -557,3 +557,52 @@ github self hosted runner:
 9  06/07/25 03:04:14 sudo ./svc.sh install ;
 10  06/07/25 03:04:24 sudo ./svc.sh start
 11  06/07/25 03:07:39 history
+
+
+==================================
+1  07/07/25 10:07:04 git clone https://github.com/pdevops78/tools-automation                                                                                                             -code
+2  07/07/25 10:07:12 ls
+3  07/07/25 10:07:16 cd tools-automation-code
+4  07/07/25 10:07:18 ls
+5  07/07/25 10:07:35 which ssh
+6  07/07/25 10:08:02 pip version
+7  07/07/25 10:08:07 pip
+8  07/07/25 10:08:13 pip --version
+9  07/07/25 10:08:20 ansible --version
+10  07/07/25 10:08:30 sudo dnf install asnible -y
+11  07/07/25 10:09:29 openssl --version
+12  07/07/25 10:09:37 openssl version
+13  07/07/25 10:10:09 sudo dnf remove openssh-server openssh-client
+14  07/07/25 10:10:25 sudo dnf install openssh-server openssh-client -y
+15  07/07/25 10:10:59 openssl version
+16  07/07/25 10:11:18 which ssh
+17  07/07/25 10:11:25 ssh
+18  07/07/25 10:11:43 ls
+19  07/07/25 10:11:47 cd tools-automation-code
+20  07/07/25 10:12:17 ansible-playbook -i 172.31.29.229, tools.yaml -e tool_n                                                                                                             ame -e ansible_user=ec2-user -e ansible_password=DevOps321
+21  07/07/25 10:12:32 ansible-playbook -i 172.31.29.229, tools.yaml -e tool_n                                                                                                             ame=ci-server -e ansible_user=ec2-user -e ansible_password=DevOps321
+22  07/07/25 10:13:13 sudo systemctl status sshd
+23  07/07/25 10:13:29 sudo 'systemctl daemon-reload
+24  07/07/25 10:13:39 sudo systemctl daemon-reload
+25  07/07/25 10:13:44 sudo systemctl status sshd
+26  07/07/25 10:14:06 sudo systemctl start sshd
+27  07/07/25 10:14:53 sudo netstat -tulnp | grep :22
+28  07/07/25 10:15:17 ping 172.31.29.229
+29  07/07/25 10:15:47 which ssh
+30  07/07/25 10:15:59  sudo systemctl status sshd
+31  07/07/25 10:16:10  sudo systemctl restart  sshd
+32  07/07/25 10:16:48 sudo yum install -y openssh-server
+33  07/07/25 10:17:19 sudo systemctl daemon-reload
+34  07/07/25 10:17:42 sudo systemctl enable sshd
+35  07/07/25 10:17:55 sudo systemctl start sshd
+36  07/07/25 10:18:11 sudo systemctl status sshd
+37  07/07/25 10:18:53 ls /usr/lib/systemd/system/sshd.service
+38  07/07/25 10:19:10 openssl --version
+39  07/07/25 10:19:16 openssl version
+40  07/07/25 10:20:43 ls
+41  07/07/25 10:20:48 cd tools-automation-code
+42  07/07/25 10:20:51 cd
+43  07/07/25 10:20:57 rm -rf github-runner
+44  07/07/25 10:21:05 cd tools-automation-code
+45  07/07/25 10:21:58 ansible-playbook -i 172.31.29.229, tools.yaml -e tool_n                                                                                                             ame=ci-server -e ansible_user=ec2-user -e ansible_password=DevOps321
+
