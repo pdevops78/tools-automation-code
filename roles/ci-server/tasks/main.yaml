@@ -21,7 +21,7 @@
     chdir: /home/ec2-user/github-runner
 
 - name: install a runner
-  ansible.builtin.shell: ./config.sh remove --token A5LROCYHH5ZKL5WY27YS5MLINPCIS ; ./config.sh --unattended --replace --url https://github.com/pdevops78 --token A5LROCYHH5ZKL5WY27YS5MLINPCIS
+  ansible.builtin.shell: ./config.sh remove --token A5LROCZFJJLECIRJSB7BF4LINPMJ6 ; ./config.sh --unattended --replace --url https://github.com/pdevops78 --token A5LROCZFJJLECIRJSB7BF4LINPMJ6
   args:
     chdir: /home/ec2-user/github-runner
   become_user: ec2-user
