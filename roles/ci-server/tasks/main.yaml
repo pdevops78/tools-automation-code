@@ -33,21 +33,21 @@
     chdir: /home/ec2-user/github-runner
 
 
-#- name: Install java 17 version
-#  ansible.builtin.dnf:
-#    name: java-17-openjdk
-#    state: installed
+- name: Install java 17 version
+  ansible.builtin.dnf:
+    name: java-17-openjdk
+    state: installed
 
-##- name: make a directory
-##  ansible.builtin.file:
-##    path: /opt
-##    state: directory
-#
-#- name: Download sonar-scanner
-#  ansible.builtin.unarchive:
-#    src: https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-7.1.0.4889-linux-x64.zip
-#    dest: /opt
-#    remote_src: yes
+#- name: make a directory
+#  ansible.builtin.file:
+#    path: /opt
+#    state: directory
+
+- name: Download sonar-scanner
+  ansible.builtin.unarchive:
+    src: https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-7.1.0.4889-linux-x64.zip
+    dest: /opt
+    remote_src: yes
 
 
 
