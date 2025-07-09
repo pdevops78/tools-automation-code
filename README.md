@@ -606,3 +606,16 @@ github self hosted runner:
 44  07/07/25 10:21:05 cd tools-automation-code
 45  07/07/25 10:21:58 ansible-playbook -i 172.31.29.229, tools.yaml -e tool_n                                                                                                             ame=ci-server -e ansible_user=ec2-user -e ansible_password=DevOps321
 
+
+
+to encrypt a string in go server:
+================================
+curl 'http://54.167.61.228:8153/go/api/admin/encrypt' \
+-H 'Accept: application/vnd.go.cd.v1+json' \
+-H 'Content-Type: application/json' \
+-X POST -d '{
+"value": "hvs.T8WnPWmYmGZkPYlGAHXVmebk"
+}'
+
+"encrypted_value" : "AES:wBVyA9p4gjT1tIo4UqR5sQ==:J1rU2Xuh0vqJreTN0XUn5D8pyInq2jF/ta1jT3neUwA="
+
