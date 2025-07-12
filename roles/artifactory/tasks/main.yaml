@@ -18,11 +18,6 @@
     remote_src: yes
   become_user: artifact
 
-- name: copy artifactory service
-  ansible.builtin.template:
-    src: artifactory.service
-    dest: /etc/systemd/system/artifactory.service
-
 - name: start artifactory service
   ansible.builtin.systemd_service:
     name: artifactory.service
