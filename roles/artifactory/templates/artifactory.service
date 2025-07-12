@@ -6,11 +6,11 @@ After=network.target
 Type=forking
 User=artifactory
 Group=artifactory
-EnvironmentFile=-/opt/artifactory-oss-7.21.5/var/etc/system.yaml
+EnvironmentFile=/opt/artifactory-oss-7.21.5/var/etc/system.yaml
 ExecStart=/opt/artifactory-oss-7.21.5/app/bin/artifactory.sh start
-ExecStop=/opt/artifactory-oss-7.21.5/app/bin/artifactory.sh stop
-ExecReload=/opt/artifactory-oss-7.21.5/app/bin/artifactory.sh restart
-PIDFile=/opt/artifactory-oss-7.21.5/run/artifactory.pid
+PIDFile=/opt/artifactory-oss-7.21.5/app/run/artifactory.pid
+SyslogIdentifier=artifactory
+
 Restart=on-failure
 LimitNOFILE=65536
 
