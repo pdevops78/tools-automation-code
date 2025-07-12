@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=forking
 User=artifact
-Group=artifactory
+Group=artifact
 EnvironmentFile=/opt/artifactory-oss-7.21.5/var/etc/system.yaml
 ExecStart=/opt/artifactory-oss-7.21.5/app/bin/artifactory.sh start
 PIDFile=/opt/artifactory-oss-7.21.5/app/run/artifactory.pid
