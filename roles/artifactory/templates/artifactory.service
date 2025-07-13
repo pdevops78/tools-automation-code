@@ -4,8 +4,8 @@ After=network.target
 
 [Service]
 Type=forking
-User=artifactory
-Group=artifactory
+User=artifact
+Group=artifact
 ExecStart=/opt/artifactory-oss-7.21.5/app/bin/artifactoryManage.sh start
 ExecStop=/opt/artifactory-oss-7.21.5/app/bin/artifactoryManage.sh stop
 LimitNOFILE=100000
