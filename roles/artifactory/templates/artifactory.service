@@ -11,6 +11,7 @@ ExecStop=/opt/artifactory-oss-7.21.5/app/bin/artifactoryManage.sh stop
 LimitNOFILE=100000
 TimeoutSec=300
 Restart=on-failure
+SyslogIdentifier=artifactory
 
 [Install]
 WantedBy=multi-user.target
