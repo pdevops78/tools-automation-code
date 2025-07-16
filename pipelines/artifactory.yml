@@ -11,10 +11,11 @@ pipelines:
         shallow_clone: false
         auto_update: true
         branch: main
+    environment_variables:
+    APP_VERSION: ""
     secure_variables:
       vault_token: "AES:mZ+qHIsb9ddvEqRzXwhzNg==:RfB2FPPssxxlDbMBpiRzU5wcCd/4zG1VBfUGXW6CmEA="
-    environment_variables:
-    App_VERSION: ""
+
     stages:
       - DEV:
           fetch_materials: true
