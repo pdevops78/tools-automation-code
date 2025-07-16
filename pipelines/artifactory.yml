@@ -2,7 +2,7 @@ format_version: 10
 pipelines:
   artifactory:
     group: tools
-    label_template: ${COUNT}
+    label_template: ${env:app_version}
     lock_behavior: none
     display_order: -1
     materials:
