@@ -1,6 +1,6 @@
 - name: add a user
   ansible.builtin.user:
-    name: artifact
+    name: artifactory
 
 - name: make a folder
   ansible.builtin.file:
