@@ -9,31 +9,24 @@
     owner: artifactory
     group: artifactory
 
-- name: copy artifactory repo
-  ansible.builtin.template:
-    src: jfrog.repo
-    dest: /etc/yum.repos.d/frog-artifactory-rpms.repo
-#
-#- name: Download and unarchive artifactory repo
-#  ansible.builtin.unarchive:
-#    src: https://releases.jfrog.io/artifactory/bintray-artifactory/org/artifactory/oss/jfrog-artifactory-oss/7.21.5/jfrog-artifactory-oss-7.21.5-linux.tar.gz
-#    dest: /opt
-#    owner: artifactory
-#    group: artifactory
-#    remote_src: yes
-#  become_user: artifactory
+- name: Download and unarchive artifactory repo
+  ansible.builtin.unarchive:
+    src: https://releases.jfrog.io/artifactory/bintray-artifactory/org/artifactory/oss/jfrog-artifactory-oss/7.21.5/jfrog-artifactory-oss-7.21.5-linux.tar.gz
+    dest: /opt
+    owner: artifactory
+    group: artifactory
+    remote_src: yes
+  become_user: artifactory
 
-- name: Install Jfrog
-  ansible.builtin.dnf:
-    name: jfrog-artifactory-oss
-    state: installed
-    disable_gpg_check: true
+#- name: copy artifactory service
+#  ansible.builtin.template:
+#    src: jfrog.repo
+#    dest: yum.repos.d/artifactory.repo
 
 - name: start artifactory service
   ansible.builtin.systemd_service:
-    name: artifactory
+    name: artifactory.service
     state: started
-    enabled: yes
 #    enabled: yes
 #    daemon-reload: yes
 
