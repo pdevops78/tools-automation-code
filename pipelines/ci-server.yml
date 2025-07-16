@@ -12,7 +12,8 @@ pipelines:
         auto_update: true
         branch: main
     secure_variables:
-      vault_token: "AES:wBVyA9p4gjT1tIo4UqR5sQ==:J1rU2Xuh0vqJreTN0XUn5D8pyInq2jF/ta1jT3neUwA="
+      vault_token: "AES:mZ+qHIsb9ddvEqRzXwhzNg==:RfB2FPPssxxlDbMBpiRzU5wcCd/4zG1VBfUGXW6CmEA="
+
     stages:
       - DEV:
           fetch_materials: true

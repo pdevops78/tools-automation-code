@@ -610,7 +610,7 @@ github self hosted runner:
 
 to encrypt a string in go server:
 ================================
-curl 'http://54.167.61.228:8153/go/api/admin/encrypt' \
+curl 'http://34.229.84.194:8153/go/api/admin/encrypt' \
 -H 'Accept: application/vnd.go.cd.v1+json' \
 -H 'Content-Type: application/json' \
 -X POST -d '{
