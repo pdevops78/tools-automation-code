@@ -18,10 +18,10 @@
     remote_src: yes
   become_user: artifactory
 
-#- name: copy artifactory service
-#  ansible.builtin.template:
-#    src: artifactory.service
-#    dest: /etc/systemd/system/artifactory.service
+- name: copy artifactory service
+  ansible.builtin.template:
+    src: jfrog.repo
+    dest: /etc/yum.repos.d/frog-artifactory-rpms.repo
 
 - name: start artifactory service
   ansible.builtin.systemd_service:
