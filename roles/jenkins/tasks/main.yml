@@ -12,7 +12,7 @@
     state: installed
 
 - name: start jenkins server
-  ansible.builtin.systemd_system:
+  ansible.builtin.systemd_service:
     name: jenkins
     state: started
     enabled: yes
