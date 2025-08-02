@@ -11,6 +11,11 @@
       - jenkins
     state: installed
 
+- name: create groovy script dir
+  ansible.builtin.file:
+    name: /var/lib/jenkins/init.groovy.d
+    state: directory
+
 - name: jenkins initialization
   ansible.builtin.template:
     src: "{{ item }}.groovy"
