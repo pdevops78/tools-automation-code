@@ -9,19 +9,33 @@ import hudson.model.*
 import jenkins.model.*
 import hudson.security.*
 
-final List<String> REQUIRED_PLUGINS = ["workflow-aggregator", "ws-cleanup", "blueocean"]
+//final List<String> REQUIRED_PLUGINS = ["workflow-aggregator", "ws-cleanup", "blueocean"]
+//
+//if (Jenkins.instance.pluginManager.plugins.collect {
+//    it.shortName
+//}.intersect(REQUIRED_PLUGINS).size() != REQUIRED_PLUGINS.size()) {
+//    REQUIRED_PLUGINS.collect {
+//        Jenkins.instance.updateCenter.getPlugin(it).deploy()
+//    }.each {
+//        it.get()
+//    }
+//    Jenkins.instance.restart()
+//    println 'Run this script again after restarting to create the jobs!'
+//    throw new RestartRequiredException(null)
+//}
+def plugins = ["workflow-aggregator", "ws-cleanup", "blueocean"]
+def instance = Jenkins.getInstance()
+def pm = instance.getPluginManager()
+def uc = instance.getUpdateCenter()
 
-if (Jenkins.instance.pluginManager.plugins.collect {
-    it.shortName
-}.intersect(REQUIRED_PLUGINS).size() != REQUIRED_PLUGINS.size()) {
-    REQUIRED_PLUGINS.collect {
-        Jenkins.instance.updateCenter.getPlugin(it).deploy()
-    }.each {
-        it.get()
+plugins.each {
+    if (!pm.getPlugin(it)) {
+        def plugin = uc.getPlugin(it)
+        if (plugin) {
+            plugin.deploy()
+        }
     }
-    Jenkins.instance.restart()
-    println 'Run this script again after restarting to create the jobs!'
-    throw new RestartRequiredException(null)
 }
+instance.save()
 
 println "Plugins were installed successfully"
