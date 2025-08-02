@@ -12,7 +12,7 @@ import hudson.security.*
 final List<String> REQUIRED_PLUGINS = [
         "workflow-aggregator",
         "ws-cleanup",
-        "blueocean"
+        "blueocean",
 ]
 
 if (Jenkins.instance.pluginManager.plugins.collect {
