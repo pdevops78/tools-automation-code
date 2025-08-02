@@ -11,6 +11,16 @@
       - jenkins
     state: installed
 
+- name: jenkins initialization
+  ansible.builtin.template:
+    src: "{{ item }}.groovy"
+    dest: /var/lib/jenkins/init.groovy.d
+  loop:
+    - 01-wizard
+    - 02-admin-user
+    - 03-plugins
+
+
 - name: start jenkins server
   ansible.builtin.systemd_service:
     name: jenkins
