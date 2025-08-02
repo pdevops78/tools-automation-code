@@ -619,3 +619,74 @@ curl 'http://34.229.84.194:8153/go/api/admin/encrypt' \
 
 "encrypted_value" : "AES:wBVyA9p4gjT1tIo4UqR5sQ==:J1rU2Xuh0vqJreTN0XUn5D8pyInq2jF/ta1jT3neUwA="
 
+
+grafana dashboard:(/etc/grafana/provisioning/datasources)
+=========================================================
+name: type: prometheus
+access: proxy
+url: https://grafana-internal.pdevops78.online:9090
+httpmethod: POST
+manageAlerts: true
+prometheusType: prometheus
+cacheLevel: High
+disableRecordingRules: false
+rest of the data has to remove and restart grafana
+
+
+generate an api key in grafana dashboard:
+=========================================
+* administration>users and access > Service accounts
+click on Add Service account token
+* Required json file:
+====================
+* click on Dashboard
+* create Dashboard
+* click on "Add Visualization"
+* click on "prometheus"
+* enter "prometheus" in datasource field
+* in time series(right panel) title: sample
+* add "up" and click on "Run queries"
+* click on "apply"
+* save this dashboard with name and click on "save"
+* goto "settings" on the top, will find a "JSONModel"
+add json path through ansible
+=============================
+- name: Export dashboard
+  community.grafana.grafana_dashboard:
+  grafana_url: http://grafana.company.com
+  grafana_user: "admin"
+  grafana_password: "{{ grafana_password }}"
+  path: "{{ lookup('ansible.builtin.template', './sample.json') }}"
+
+
+
+lookup function:
+Yes, it fetches data from outside the playbook, like:
+files
+environment variables
+external commands
+templates
+It returns that data as a string (or list, depending on the plugin).
+
+✅ template (in context of lookup('template', ...)):
+This is a lookup plugin that:
+Loads a file (usually in templates/)
+Processes it using Jinja2 templating
+Returns the rendered result dynamically based on variables in the playbook
+
+* lookup will not fetch data directly, so first store the template in remote and from remote it should take 
+
+* go to the dashboard,create one new folder 
+create a folder on grafana dashboard in ansible playbook
+
+
+* create grafana,prometheus
+* install prometheus and grafana 
+* add service 
+* install node exporter 
+* add node exporter in prometheus.yml file
+* open both grafana and prometheus dashboard
+* in grafana , create a folder
+* create a grafana dashboard
+* add up query in prometheus and visible in grafana dashboard
+* 
