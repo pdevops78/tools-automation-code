@@ -32,6 +32,11 @@
     enabled: yes
     daemon-reload: yes
 
+- name: install python-jenkins
+  ansible.builtin.pip:
+    name: python-jenkins
+    executable: pip3.9
+
 - name: Create a jenkins job using basic authentication
   community.general.jenkins_job:
     config: "{{ lookup('file', 'templates/jobs/pipeline-jobs.xml') }}"
