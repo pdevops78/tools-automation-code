@@ -19,7 +19,7 @@
 - name: jenkins initialization
   ansible.builtin.template:
     src: "{{ item }}.groovy"
-    dest: /var/lib/jenkins/init.groovy.d/{{ item }}.groovy
+    dest: /var/lib/jenkins/init.groovy.d/{{item}}.groovy
   loop:
     - 01-wizard
     - 02-admin-user
@@ -28,7 +28,7 @@
 - name: start jenkins server
   ansible.builtin.systemd_service:
     name: jenkins
-    state: started
+    state: restarted
     enabled: yes
     daemon-reload: yes
 
