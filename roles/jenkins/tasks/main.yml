@@ -42,5 +42,5 @@
     config: "{{ lookup('file', 'templates/jobs/pipeline-jobs.xml') }}"
     name: test
     password: admin123
-    url: http://13.223.47.35:8080
+    url: http://3.91.42.2:8080
     user: admin
