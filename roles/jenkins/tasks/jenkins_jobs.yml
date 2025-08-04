@@ -13,7 +13,7 @@
 
 - name: Create a jenkins job using basic authentication
   community.general.jenkins_job:
-    config: "{{ lookup('file', '/tmp/pipeline-jobs.xml') }}"
+    config: "{{ lookup('file', '/tmp/{{item}}.xml') }}"
     name: "{{item}}"
     password: admin123
     url: http://34.229.214.95:8080
