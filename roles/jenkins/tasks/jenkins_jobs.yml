@@ -6,8 +6,10 @@
 - name: copy local to remote
   ansible.builtin.template:
     src: templates/jobs/pipeline-jobs.xml
-    dest: /tmp/pipeline-jobs.xml
-
+    dest: /tmp/{{item}}.xml
+  loop:
+    - frontend
+    - backend
 
 - name: Create a jenkins job using basic authentication
   community.general.jenkins_job:
