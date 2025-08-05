@@ -2,7 +2,6 @@
 <org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject plugin="workflow-multibranch@810.v6b_6e77da_7058">
     <actions/>
     <description></description>
-    <displayName>{{item}}</displayName>
     <properties/>
     <folderViews class="jenkins.branch.MultiBranchProjectViewHolder" plugin="branch-api@2.1235.v04e86c7ce54c">
         <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
@@ -23,9 +22,9 @@
         <data>
             <jenkins.branch.BranchSource>
                 <source class="jenkins.plugins.git.GitSCMSource" plugin="git@5.7.0">
-                    <id>f0000aa4-c8bb-4cd7-9f28-21030b308461</id>
-                    <remote>https://github.com/pdevops/expense-{{item}}</remote>
-                    <credentialsId>jenkins</credentialsId>
+                    <id>d38e965c-4139-4a89-8b2f-2976bde61a28</id>
+                    <remote>https://github.com/pdevops78/expense-{{item}}</remote>
+                    <credentialsId></credentialsId>
                     <traits>
                         <jenkins.plugins.git.traits.BranchDiscoveryTrait/>
                         <jenkins.plugins.git.traits.TagDiscoveryTrait/>
