@@ -689,4 +689,9 @@ create a folder on grafana dashboard in ansible playbook
 * in grafana , create a folder
 * create a grafana dashboard
 * add up query in prometheus and visible in grafana dashboard
+
+
+* master or main : lint code and code review
+* developer: lint code , unit tests , integration tests, Code Review
+* tag: npm install and release code
 * 
