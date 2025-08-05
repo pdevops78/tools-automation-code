@@ -24,7 +24,7 @@
             <jenkins.branch.BranchSource>
                 <source class="jenkins.plugins.git.GitSCMSource" plugin="git@5.7.0">
                     <id>f0000aa4-c8bb-4cd7-9f28-21030b308461</id>
-                    <remote>https://github.com/pdevops/expense-backend</remote>
+                    <remote>https://github.com/pdevops/expense-{{item}}</remote>
                     <credentialsId>jenkins</credentialsId>
                     <traits>
                         <jenkins.plugins.git.traits.BranchDiscoveryTrait/>
