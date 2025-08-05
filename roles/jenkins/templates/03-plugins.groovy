@@ -9,7 +9,7 @@ import hudson.model.*
 import jenkins.model.*
 import hudson.security.*
 
-final List<String> REQUIRED_PLUGINS = ["workflow-aggregator", "ws-cleanup", "blueocean"]
+final List<String> REQUIRED_PLUGINS = ["workflow-aggregator", "ws-cleanup", "blueocean", "ssh-slaves"]
 
 if (Jenkins.instance.pluginManager.plugins.collect {
     it.shortName
