@@ -5,7 +5,7 @@
 
 - name: copy local to remote
   ansible.builtin.template:
-    src: jobs/multibranch-pipeline.xml
+    src: jobs/multibranch-webhook.xml
     dest: /tmp/{{item}}.xml
   loop:
     - frontend
