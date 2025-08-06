@@ -5,7 +5,7 @@
 
 - name: copy local to remote
   ansible.builtin.template:
-    src: templates/jobs/multibranch-pipeline.xml
+    src: jobs/multibranch-pipeline.xml
     dest: /tmp/{{item}}.xml
   loop:
     - frontend
@@ -16,9 +16,8 @@
     config: "{{ lookup('file', '/tmp/{{item}}.xml') }}"
     name: "{{item}}"
     password: admin123
-    url: http://54.196.67.81:8080
+    url: http://54.159.68.139:8080
     user: admin
-    state: present
   loop:
     - frontend
     - backend
