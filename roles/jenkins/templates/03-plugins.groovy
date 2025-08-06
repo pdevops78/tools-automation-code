@@ -24,5 +24,4 @@ if (Jenkins.instance.pluginManager.plugins.collect {
     throw new RestartRequiredException(null)
 }
 
-
 println "Plugins were installed successfully"
