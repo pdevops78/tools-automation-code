@@ -16,7 +16,7 @@
     config: "{{ lookup('file', '/tmp/{{item}}.xml') }}"
     name: "{{item}}"
     password: admin123
-    url: http://98.86.115.227:8080
+    url: http://54.196.67.81:8080
     user: admin
   loop:
     - frontend
