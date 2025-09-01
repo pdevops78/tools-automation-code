@@ -9,7 +9,11 @@
     dest: /tmp/{{item}}.xml
   loop:
     - frontend
-    - backend
+    - catalogue
+    - user
+    - cart
+    - shipping
+    - payment
 
 - name: Create a jenkins job using basic authentication
   community.general.jenkins_job:
@@ -20,5 +24,9 @@
     user: admin
   loop:
     - frontend
-    - backend
+    - catalogue
+    - user
+    - cart
+    - shipping
+    - payment
 
