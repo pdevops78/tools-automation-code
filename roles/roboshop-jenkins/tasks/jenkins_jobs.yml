@@ -9,24 +9,16 @@
     dest: /tmp/{{item}}.xml
   loop:
     - frontend
-    - catalogue
-    - user
-    - cart
-    - shipping
-    - payment
+
 
 - name: Create a jenkins job using basic authentication
   community.general.jenkins_job:
     config: "{{ lookup('file', '/tmp/{{item}}.xml') }}"
     name: "{{item}}"
     password: admin123
-    url: http://18.234.156.182:8080
+    url: http://98.81.0.92:8080
     user: admin
   loop:
     - frontend
-    - catalogue
-    - user
-    - cart
-    - shipping
-    - payment
+
 
